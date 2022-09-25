@@ -12,6 +12,7 @@ This plugin uses the power of [LeaderF](https://github.com/Yggdroot/LeaderF) to 
 ## Requirements
 
 - [LeaderF](https://github.com/Yggdroot/LeaderF)
+- ctags is properly configured in Vim/Neovim.
 
 ## Install
 
