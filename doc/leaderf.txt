@@ -17,13 +17,24 @@ USAGE~
 
 To import the class under cursor, you can use the following mapping:
 
-    noremap <leader><leader>iu :<C-U><C-R>=printf("Leaderf phpns --input %s", expand("<cword>"))<CR><CR>
+    noremap <leader>iu :<C-U><C-R>=printf("Leaderf phpns --input %s", expand("<cword>"))<CR><CR>
+    noremap <leader>ec :<C-U><C-R>=printf("Leaderf phpns --input %s --expand", expand("<cword>"))<CR><CR>
+
 
 ------------------------------------------------------------------------------
 COMMANDS~
 
 :LeaderfPhpns                                     *LeaderfPhpns*
     Launch LeaderF to find a FQCN to import.
+
+
+==============================================================================
+OPTIONS~
+
+g:Lf_PHPNamespaceExpandToAbsolute            *g:Lf_PHPNamespaceExpandToAbsolute*
+    Whether to expand the classname under cursor to its FQCN in the absolute 
+    form.
+    default: '1'
 
 
 ==============================================================================

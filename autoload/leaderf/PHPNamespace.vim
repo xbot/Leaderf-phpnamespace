@@ -2,6 +2,10 @@ if leaderf#versionCheck() == 0
     finish
 endif
 
+if !exists('g:Lf_PHPNamespaceExpandToAbsolute')
+    let g:Lf_PHPNamespaceExpandToAbsolute=1
+endif
+
 exec g:Lf_py "import vim, sys, os.path"
 exec g:Lf_py "cwd = vim.eval('expand(\"<sfile>:p:h\")')"
 exec g:Lf_py "sys.path.insert(0, os.path.join(cwd, 'python'))"
@@ -57,4 +61,13 @@ function! leaderf#PHPNamespace#ImportFQCN(fqcn)
     endif
 
     call append(l:append_lnum, "use " . a:fqcn . ';')
+endfunction
+
+function leaderf#PHPNamespace#ExpandFQCN(fqcn)
+    let l:fqcn = a:fqcn
+    if g:Lf_PHPNamespaceExpandToAbsolute == 1
+        let l:fqcn = '\' . l:fqcn
+    endif
+
+    exec 'normal! viws' . l:fqcn
 endfunction

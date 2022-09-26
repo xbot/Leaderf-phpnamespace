@@ -69,7 +69,10 @@ class PHPNamespaceExplManager(Manager):
         if len(args) == 0:
             return
 
-        lfCmd("call leaderf#PHPNamespace#ImportFQCN('{0}')".format(args[0]))
+        if '--expand' in self.getArguments():
+            lfCmd("call leaderf#PHPNamespace#ExpandFQCN('{0}')".format(args[0]))
+        else:
+            lfCmd("call leaderf#PHPNamespace#ImportFQCN('{0}')".format(args[0]))
 
     def _getDigest(self, line, mode):
         """

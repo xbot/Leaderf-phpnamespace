@@ -26,7 +26,9 @@ Plug 'xbot/Leaderf-phpnamespace'
 
 ```vim
 " Import the current class under cursor
-noremap <leader><leader>iu :<C-U><C-R>=printf("Leaderf phpns --input %s", expand("<cword>"))<CR><CR>
+noremap <leader>iu :<C-U><C-R>=printf("Leaderf phpns --input %s", expand("<cword>"))<CR><CR>
+" Expand the classname under cursor to its FQCN form.
+noremap <leader>ec :<C-U><C-R>=printf("Leaderf phpns --input %s --expand", expand("<cword>"))<CR><CR>
 ```
 
 ## Commands
@@ -36,6 +38,12 @@ noremap <leader><leader>iu :<C-U><C-R>=printf("Leaderf phpns --input %s", expand
 ```
 
 Press `F1` to get more help
+
+## Options
+
+```vim
+let g:Lf_PHPNamespaceExpandToAbsolute=1
+```
 
 ## LICENSE
 
