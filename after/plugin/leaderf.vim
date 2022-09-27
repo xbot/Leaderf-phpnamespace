@@ -5,6 +5,7 @@ let s:extension = {
       \   "help": "PHP namespace resolver",
       \   "manager_id": "leaderf#PHPNamespace#GenerateManagerID",
       \   "arguments": [
+      \       {"name": ["--expand"], "nargs": "0", "help": "expand the class name under cursor to its FQCN."},
       \   ]
       \ }
 
