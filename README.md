@@ -5,7 +5,7 @@ This plugin uses the power of [LeaderF](https://github.com/Yggdroot/LeaderF) to 
 ## Features
 
 - Insert `use` statements for FQCNs.
-- [ ] Expand class names to FQCNs.
+- Expand class names to FQCNs.
 - [ ] Insert namespace for the current file.
 - All the above features support the fuzzy searching function and all the three modes (nameonly, fullpath and regex) provided by LeaderF.
 
