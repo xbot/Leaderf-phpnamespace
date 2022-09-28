@@ -89,3 +89,31 @@ function! leaderf#PHPNamespace#SortImportedFQCNs()
 
     exe restorepos
 endfunction
+
+function! leaderf#PHPNamespace#InsertNamespace()
+    let restorepos = line(".") . "normal!" . virtcol(".") . "|"
+
+    normal G
+
+    if search('^namespace\s\+', 'nb') > 0
+        echomsg 'namespace already exists!'
+        return
+    endif
+
+    let l:relative_path = matchstr(expand('%:.'), '[A-Za-z].\+\(/\)\@=')
+    let l:namespace = substitute(l:relative_path, '/', '\', 'g')
+    let l:namespace = pyeval('"' . l:namespace . '".title()')
+
+    let l:append_lnum = search('^declare(', 'nb')
+    if l:append_lnum == 0
+        let l:append_lnum = search('^<?', 'nb')
+        if l:append_lnum == 0
+            let l:append_lnum = 1
+        endif
+    endif
+
+    call append(l:append_lnum, '')
+    call append(l:append_lnum + 1, 'namespace ' . l:namespace . ';')
+
+    exe restorepos
+endfunction

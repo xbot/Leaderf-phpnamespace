@@ -24,8 +24,11 @@ To import the class under cursor, you can use the following mapping:
 ------------------------------------------------------------------------------
 COMMANDS~
 
-:LeaderfPhpns                                     *LeaderfPhpns*
+:LeaderfPhpns                                                     *LeaderfPhpns*
     Launch LeaderF to find a FQCN to import.
+
+:PHPNamespaceInsert                                         *PHPNamespaceInsert*
+    Insert namespace for the current file.
 
 
 ==============================================================================

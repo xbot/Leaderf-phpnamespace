@@ -13,6 +13,7 @@ let s:extension = {
 call g:LfRegisterPythonExtension(s:extension.name, s:extension)
 
 command! -bar -nargs=0 LeaderfPhpns Leaderf phpns
+command! -bar -nargs=0 PHPNamespaceInsert call leaderf#PHPNamespace#InsertNamespace()
 
 " In order to be listed by :LeaderfSelf
 call g:LfRegisterSelf("LeaderfPhpns", "perform PHP namespace related tasks")
