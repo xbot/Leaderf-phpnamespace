@@ -1,4 +1,4 @@
-*LeaderF-phpnamespace*
+*Leaderf-phpnamespace*
 
 INTRODUCTION~
 
@@ -35,6 +35,17 @@ g:Lf_PHPNamespaceExpandToAbsolute            *g:Lf_PHPNamespaceExpandToAbsolute*
     Whether to expand the classname under cursor to its FQCN in the absolute 
     form.
     default: '1'
+
+g:Lf_PHPNamespaceSortAfterImport              *g:Lf_PHPNamespaceSortAfterImport*
+    Whether to sort the `use` statements block alphabetically after importing
+    a class.
+    default: '1'
+
+
+==============================================================================
+Credits~
+
+- arnaud-lb/vim-php-namespace: https://github.com/arnaud-lb/vim-php-namespace
 
 
 ==============================================================================

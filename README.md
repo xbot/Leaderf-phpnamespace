@@ -1,10 +1,11 @@
-# LeaderF-phpnamespace
+# Leaderf-phpnamespace
 
 This plugin uses the power of [LeaderF](https://github.com/Yggdroot/LeaderF) to perform PHP namespace related tasks.
 
 ## Features
 
 - Insert `use` statements for FQCNs.
+- Sort `use` statements alphabetically.
 - Expand class names to FQCNs.
 - [ ] Insert namespace for the current file.
 - All the above features support the fuzzy searching function and all the three modes (nameonly, fullpath and regex) provided by LeaderF.
@@ -43,7 +44,12 @@ Press `F1` to get more help
 
 ```vim
 let g:Lf_PHPNamespaceExpandToAbsolute=1
+let g:Lf_PHPNamespaceSortAfterImport=1
 ```
+
+## Credits
+
+- [arnaud-lb/vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace)
 
 ## LICENSE
 

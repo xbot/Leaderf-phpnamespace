@@ -6,6 +6,10 @@ if !exists('g:Lf_PHPNamespaceExpandToAbsolute')
     let g:Lf_PHPNamespaceExpandToAbsolute=1
 endif
 
+if !exists('g:Lf_PHPNamespaceSortAfterImport')
+    let g:Lf_PHPNamespaceSortAfterImport=1
+endif
+
 exec g:Lf_py "import vim, sys, os.path"
 exec g:Lf_py "cwd = vim.eval('expand(\"<sfile>:p:h\")')"
 exec g:Lf_py "sys.path.insert(0, os.path.join(cwd, 'python'))"
@@ -61,6 +65,10 @@ function! leaderf#PHPNamespace#ImportFQCN(fqcn)
     endif
 
     call append(l:append_lnum, "use " . a:fqcn . ';')
+
+    if g:Lf_PHPNamespaceSortAfterImport == 1
+        call leaderf#PHPNamespace#SortImportedFQCNs()
+    endif
 endfunction
 
 function leaderf#PHPNamespace#ExpandFQCN(fqcn)
@@ -70,4 +78,14 @@ function leaderf#PHPNamespace#ExpandFQCN(fqcn)
     endif
 
     exec 'normal! viws' . l:fqcn
+endfunction
+
+function! leaderf#PHPNamespace#SortImportedFQCNs()
+    let restorepos = line(".") . "normal!" . virtcol(".") . "|"
+
+    if search('^use\_s\_[[:alnum:][:blank:]\\_]*;', 'be') > 0
+        execute "'{,'}-1sort i"
+    endif
+
+    exe restorepos
 endfunction
