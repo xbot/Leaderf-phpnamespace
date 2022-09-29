@@ -17,7 +17,11 @@ class PHPNamespaceExplorer(Explorer):
     def getContent(self, *args, **kwargs):
         arguments_dict = kwargs.get("arguments", {})
 
-        if '--input' in arguments_dict and len(arguments_dict['--input']) > 0 or not self._content:
+        if (
+            "--input" in arguments_dict
+            and len(arguments_dict["--input"]) > 0
+            or not self._content
+        ):
             return self.getFreshContent(*args, **kwargs)
         else:
             return self._content
@@ -25,18 +29,18 @@ class PHPNamespaceExplorer(Explorer):
     def getFreshContent(self, *args, **kwargs):
         cword = None
         arguments_dict = kwargs.get("arguments", {})
-        if '--input' in arguments_dict:
-            cword = arguments_dict['--input'][0]
+        if "--input" in arguments_dict:
+            cword = arguments_dict["--input"][0]
 
-        pattern = '.*'
+        pattern = ".*"
         if cword is not None:
-            pattern = '^{0}$'.format(cword)
+            pattern = "^{0}$".format(cword)
 
         content = []
 
         for tag in lfEval("taglist('{0}')".format(pattern)):
-            if tag['kind'] == 'c' and 'namespace' in tag:
-                fqcn = tag['namespace'].replace('\\\\', '\\') + '\\' + tag['name']
+            if tag["kind"] == "c" and "namespace" in tag:
+                fqcn = tag["namespace"].replace("\\\\", "\\") + "\\" + tag["name"]
                 if fqcn not in content:
                     content.append(fqcn)
 
@@ -69,7 +73,7 @@ class PHPNamespaceExplManager(Manager):
         if len(args) == 0:
             return
 
-        if '--expand' in self.getArguments():
+        if "--expand" in self.getArguments():
             lfCmd("call leaderf#PHPNamespace#ExpandFQCN('{0}')".format(args[0]))
         else:
             lfCmd("call leaderf#PHPNamespace#ImportFQCN('{0}')".format(args[0]))
@@ -87,9 +91,9 @@ class PHPNamespaceExplManager(Manager):
         if mode == 0:
             return line
         elif mode == 1:
-            return line.rstrip('\\').split('\\')[-1]
+            return line.rstrip("\\").split("\\")[-1]
         else:
-            start_pos = line.rstrip('\\').rfind('\\')
+            start_pos = line.rstrip("\\").rfind("\\")
             return line[:start_pos]
 
     def _getDigestStartPos(self, line, mode):
@@ -104,10 +108,10 @@ class PHPNamespaceExplManager(Manager):
             return 0
 
         if mode == 1:
-            start_pos = line.rstrip('\\').rfind('\\')
+            start_pos = line.rstrip("\\").rfind("\\")
             if start_pos < 0:
                 start_pos = 0
-            return lfBytesLen(line[:start_pos+1])
+            return lfBytesLen(line[: start_pos + 1])
         else:
             return 0
 
